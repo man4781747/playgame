@@ -5,3 +5,4 @@ ldap3
 psycopg2-binary
 requests
 flask_cors
+flask_socketio
