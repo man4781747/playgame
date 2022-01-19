@@ -47,7 +47,7 @@ var socket;
 
 $(document).ready(function() {
   var url = 'http://34.80.222.210';
-  var port = '7788';
+  var port = '80';
   socket = io.connect(url + ':' + port);
 
   socket.on('START', function(msg) {

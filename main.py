@@ -248,4 +248,4 @@ def main_lottery_admin():
 
 if __name__ == '__main__':
     app.debug = True
-    socketio.run(app, host='0.0.0.0', port=7788, debug=True)
+    socketio.run(app, port=80, debug=True)
