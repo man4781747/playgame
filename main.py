@@ -248,15 +248,4 @@ def main_lottery_admin():
 
 if __name__ == '__main__':
     app.debug = True
-    socketio.run(app@sockets.route('/chat')
-def chat_socket(ws):
-    while not ws.closed:
-        message = ws.receive()
-        if message is None:  # message is "None" if the client has closed.
-            continue
-        # Send the message to all clients connected to this webserver
-        # process. (To support multiple processes or instances, an
-        # extra-instance storage or messaging system would be required.)
-        clients = ws.handler.server.clients.values()
-        for client in clients:
-            client.ws.send(message) port=7788, debug=True)
+    socketio.run(app, port=7788, debug=True)
