@@ -1,0 +1,110 @@
+<!-- {% raw %} -->
+<!-- {% verbatim %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <title>數據部&資辦忘年會小遊戲</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-14/css/all.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+    
+</head>
+
+<body  class="sidebar-mini layout-fixed" style="height: auto;">
+    <div id="app" class="wrapper">
+        <div class="card" style='margin: 1.25rem;'>
+            <div class="card-header">
+                <div>
+                    <input type="number" min="1" max="8" v-model="teamA">
+                    <label>組</label>
+                    <label>VS</label>
+                    <input type="number" min="1" max="8" v-model="teamB">
+                    <label>組</label>
+                    <button 
+                    @click="changeVSGroup()"
+                    type="button" class="btn btn-primary">重設組配對</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>
+                    題目類型
+                    <select v-model="GameType" @change="changeGameType()">
+                        <option selected value='TargetPic'>局部照片</option>
+                        <option value='DesList'>三項敘述</option>
+                        <option value='TrueFalse'>三對一錯</option>
+                        <!-- <option value='MainPic'>解答</option> -->
+                    </select>
+                    <span>Selected: {{ GameType }}</span>
+                </div>
+                <div class="row" >
+                    <div class="col-md-6" v-if="NowPeopleInfo.name != undefined">
+                        <h1>現在題目的人: {{NowPeopleInfo.name}}</h1>
+                        <img 
+                        :src="NowPeopleInfo.MainPic" width="600" height="400"
+                        >
+                        <template v-for="(data,index) in NowPeopleInfo.TrueFalse">
+                            <h1 v-if="data[1]==false">三真一假答案: {{data[0]}}</h1>
+                        </template>
+                    </div>
+                    <div class="col-md-6" v-else>
+                        <h1>遊戲還沒開始，確認下一個人要是誰之後就可以按下開始</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <h1>剩餘排隊題目(依序，可選擇)</h1>
+                        <div style="
+                        display: grid;grid-template-columns:repeat(5, 1fr);grid-gap: 10px;
+                        padding: 10px;
+                        ">
+                            <div 
+                                v-for="(peopleData, index) in NowPoepleQuestsList"
+                                class="btn btn-outline-dark"
+                                :class="peopleData.name==NowQuestName?'btn-primary':peopleData.name==NextQuestName?'btn-success':'btn-outline-dark'"
+                                @click="peopleData.name==NowQuestName?'':NextQuestName=peopleData.name"
+                            >
+                                {{peopleData.name}}<i v-if="peopleData.Boss==true" class="fas fa-crown"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button
+                    @click="show_ans()"
+                    type="button" class="btn btn-success">公布答案</button>
+                    <button
+                    @click="reset_quests()"
+                    type="button" class="btn btn-success">重設問題</button>
+                    <button v-if="GameStatus=='RUN'"
+                    @click="go_next_people()"
+                    type="button" class="btn btn-primary">下一題</button>
+                    <button v-else
+                    @click="run_game()"
+                    type="button" class="btn btn-primary">開始</button>
+                    <!-- <div>
+                        <label>下議題強制為主管(若有的話)</label>
+                        <input type="checkbox" v-model="NextBoss">
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+<script type="text/javascript" src="/static/VueSetting_admin.js"></script>
+
+</html>
+<!-- {% endverbatim %} -->
+<!-- {% endraw %} -->

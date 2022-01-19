@@ -1,0 +1,199 @@
+<!-- {% raw %} -->
+<!-- {% verbatim %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <title>數據部&資辦忘年會線上抽獎箱按鈕</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/TreeStudioAPIs/ExternalModule/fontawesome-free/css/all.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+
+    <style type="text/css">
+.base_body{
+    width: 80vw;
+    height: 25vh;
+    top: 3vmin;
+    left: 10vw;
+    border-radius: 5px;
+    background-color: #CCCCCC;
+    border: 0.2vmin #959D92 solid;
+}
+.base_top {
+	position: relative;
+	background-color : #CCCCCC;
+	border-radius: 0.25vmin;
+	border:0.2vmin #EEEEEE solid;
+	/* width: 11vmin; */
+	height: 20vh;
+	background-color : #DDDDDD;
+	/* padding : 0.4vmin; */
+}
+
+.base_hole {
+    margin-left: 0.4vmin;
+    margin-right: 0.4vmin;
+    margin-top: 0.3vmin;
+    border-radius: 0.25vmin;
+    border: 0.2vmin #BBBBBB solid;
+    background-color: #CCCCCC;
+    height: calc(100% - 0.7vmin);
+    position: relative;
+}
+
+    </style>
+    <style type="text/css">
+        .btn3d {
+            position: relative;
+            top: -6px;
+            border: 0;
+            transition: all 40ms linear;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        
+        .btn3d:active:focus,
+        .btn3d:focus:hover,
+        .btn3d:focus {
+            -moz-outline-style: none;
+            outline: medium none;
+        }
+        
+        .btn3d:active,
+        .btn3d.active {
+            top: 2px;
+        }
+        
+        .btn3d.btn-white {
+            color: #666666;
+            box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.10) inset, 0 8px 0 0 #f5f5f5, 0 8px 8px 1px rgba(0, 0, 0, .2);
+            background-color: #fff;
+        }
+        
+        .btn3d.btn-white:active,
+        .btn3d.btn-white.active {
+            color: #666666;
+            box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, .1);
+            background-color: #fff;
+        }
+        
+        .btn3d.btn-default {
+            color: #666666;
+            box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.10) inset, 0 8px 0 0 #BEBEBE, 0 8px 8px 1px rgba(0, 0, 0, .2);
+            background-color: #f9f9f9;
+        }
+        
+        .btn3d.btn-default:active,
+        .btn3d.btn-default.active {
+            color: #666666;
+            box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, .1);
+            background-color: #f9f9f9;
+        }
+        
+        .btn3d.btn-primary {
+            box-shadow: 0 0 0 1px #417fbd inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #4D5BBE, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+            background-color: #4274D7;
+        }
+        
+        .btn3d.btn-primary:active,
+        .btn3d.btn-primary.active {
+            box-shadow: 0 0 0 1px #417fbd inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+            background-color: #4274D7;
+        }
+        
+        .btn3d.btn-success {
+            box-shadow: 0 0 0 1px #31c300 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #5eb924, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+            background-color: #78d739;
+        }
+        
+        .btn3d.btn-success:active,
+        .btn3d.btn-success.active {
+            box-shadow: 0 0 0 1px #30cd00 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+            background-color: #78d739;
+        }
+        
+        .btn3d.btn-info {
+            box-shadow: 0 0 0 1px #00a5c3 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #348FD2, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+            background-color: #39B3D7;
+        }
+        
+        .btn3d.btn-info:active,
+        .btn3d.btn-info.active {
+            box-shadow: 0 0 0 1px #00a5c3 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+            background-color: #39B3D7;
+        }
+        
+        .btn3d.btn-warning {
+            box-shadow: 0 0 0 1px #d79a47 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #D79A34, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+            background-color: #FEAF20;
+        }
+        
+        .btn3d.btn-warning:active,
+        .btn3d.btn-warning.active {
+            box-shadow: 0 0 0 1px #d79a47 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+            background-color: #FEAF20;
+        }
+        
+        .btn3d.btn-danger {
+            box-shadow: 0 0 0 1px #b93802 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #AA0000, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+            background-color: #D73814;
+        }
+        
+        .btn3d.btn-danger:active,
+        .btn3d.btn-danger.active {
+            box-shadow: 0 0 0 1px #b93802 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+            background-color: #D73814;
+        }
+        
+        .btn3d.btn-magick {
+            color: #fff;
+            box-shadow: 0 0 0 1px #9a00cd inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #9823d5, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+            background-color: #bb39d7;
+        }
+        
+        .btn3d.btn-magick:active,
+        .btn3d.btn-magick.active {
+            box-shadow: 0 0 0 1px #9a00cd inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+            background-color: #bb39d7;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div style="display: flex;justify-content: center;align-items: center;width: 100vw;height: 100vh;">
+            <div class="base_body">
+                <div class="base_top">
+                    <div class="base_hole">
+                        <button
+                        :class="message=='開始'?'btn-primary':'btn-danger'" 
+                        style="width: 100%;height: 100%;transform: translateY(-1.2vmin);font-size: 10vh;"
+                        type="button" class="btn btn-lg btn3d"
+                        @click="message=='開始'?goStart():goStop()"
+                        >
+                            {{message}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script type="text/javascript" src="/static/main_lottery_admin.js"></script>
+</html>
+<!-- {% endverbatim %} -->
+<!-- {% endraw %} -->

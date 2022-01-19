@@ -1,0 +1,52 @@
+<!-- {% raw %} -->
+<!-- {% verbatim %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <title>數據部&資辦忘年會線上抽獎箱</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/TreeStudioAPIs/ExternalModule/fontawesome-free/css/all.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+
+    <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>
+    
+</head>
+
+<body class="sidebar-mini layout-fixed" style="height: auto;">
+    <div id="app" class="wrapper">
+        <div class="card" style='margin: 1.25rem;'>
+            <div class="card-header">
+                123
+            </div>
+            <div class="card-body">
+                {{PeopleList[GetIndex]}}
+            </div>
+        </div>
+        
+        <div class="card" style='margin: 1.25rem;'>
+            <div class="card-body">
+                <div id="myDiv"></div>
+                <!-- <div v-for="(name, index) in PeopleList">
+                    {{PeopleList[index]}}: {{PeopleCountList[index]}}
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="/static/lottery_ground.js"></script>
+
+</html>
+<!-- {% endverbatim %} -->
+<!-- {% endraw %} -->

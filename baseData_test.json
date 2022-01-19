@@ -1,0 +1,84 @@
+{
+    "優妮": {
+        "name": "優妮",
+        "MainPic": "/static/peopleData/1_Yuni/main.jpg",
+        "TargetPic": "/static/peopleData/1_Yuni/part.jpg",
+        "DesList": ["3項問題 -1","3項問題 -2","3項問題 -3"],
+        "TrueFalse": [
+            ["3真一假 - 真1", true],
+            ["3真一假 - 真2", true],
+            ["3真一假 - 假", false],
+            ["3真一假 - 真3", true]
+        ],
+        "Group": 10,
+        "Boss": true
+    },
+    "皮配": {
+        "name": "皮配",
+        "MainPic": "/static/peopleData/2_PIPE/main.jpg",
+        "TargetPic": "/static/peopleData/2_PIPE/part.jpg",
+        "DesList": ["3項問題 -1","3項問題 -2","3項問題 -3"],
+        "TrueFalse": [
+            ["3真一假 - 真1", true],
+            ["3真一假 - 真2", true],
+            ["3真一假 - 假", false],
+            ["3真一假 - 真3", true]
+        ],
+        "Group": 10,
+        "Boss": true
+    },
+    "莊于萱": {
+        "name": "莊于萱",
+        "MainPic": "/static/peopleData/admin_1/main.jpg",
+        "TargetPic": "/static/peopleData/admin_1/part.jpg",
+        "DesList": [
+            "1.眉毛有痣",
+            "2.喜歡看卡通",
+            "3.手腳冰冷"
+        ],
+        "TrueFalse": [
+            ["1.參加音樂祭", true],
+            ["2.自己一個人出國", true],
+            ["3.曾經做出一整桌菜", false],
+            ["4.會打傳說", true]
+        ],
+        "Group": 0,
+        "Boss": false
+    },
+    "陳彥凱": {
+        "name": "陳彥凱",
+        "MainPic": "/static/peopleData/admin_3/main.jpg",
+        "TargetPic": "/static/peopleData/admin_3/part.jpg",
+        "DesList": [
+            "1. 有養貓貓",
+            "2. 喜歡唱歌",
+            "3. 極度不喜歡冬天"
+        ],
+        "TrueFalse": [
+            ["1. Leetcode辦的比賽拿過1000名內的名次", false],
+            ["2. 上過小小的新聞版面一次", true],
+            ["3. 英文指考不到20分", true],
+            ["4. 幫日本人攔過警察", true]
+        ],
+        "Group": 0,
+        "Boss": false
+    },
+    "陳威辰": {
+        "name": "陳威辰",
+        "MainPic": "/static/peopleData/admin_2/main.jpg",
+        "TargetPic": "/static/peopleData/admin_2/part.jpg",
+        "DesList": [
+            "1. 自然捲",
+            "2. 貓派狗派混搭",
+            "3. 住台北"
+        ],
+        "TrueFalse": [
+            ["1. 沒有抽過菸", true],
+            ["2. 喜歡雲霄飛車", false],
+            ["3. 沒養過狗", true],
+            ["4. 愛喝whiskey", true]
+        ],
+        "Group": 0,
+        "Boss": false
+    }
+}
