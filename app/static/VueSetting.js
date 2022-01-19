@@ -44,9 +44,9 @@ var Vue_main = new Vue({
 var socket;
 
 $(document).ready(function() {
-  var url = 'http://34.80.222.210';
-  var port = '80';
-  socket = io.connect(url + ':' + port);
+  //   var url = 'http://34.80.222.210';
+  //   var port = '80';
+  socket = io.connect(document.location.href);
   socket.on('connect', function() {
   socket.emit('connect_event', {data: 'connected!'});})
 
